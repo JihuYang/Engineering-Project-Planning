@@ -1,0 +1,67 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+html, body, #root, .App #App {
+  height: 100%;
+  min-height: 100vh;
+}
+.h-200 {
+  height: 200px !important;
+}
+.h-400{
+  height: 400px !important;
+}
+.w-500 {
+  width: 500px !important;
+}
+.w-800 {
+  width: 800px !important;
+}
+.add-btn {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  font-size: 8pt !important;
+}
+
+/* Color Theme Swatches in Hex */
+.glenda-1-hex { background-color: #ECCFC1; }
+.glenda-2-hex { background-color: #DFA6A2; }
+.glenda-3-hex { background-color: #68635F; }
+.glenda-4-hex { background-color: #81968F; }
+.glenda-5-hex { background-color: #D1D0B7; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
