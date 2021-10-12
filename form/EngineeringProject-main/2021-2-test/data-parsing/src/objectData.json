@@ -1,0 +1,13 @@
+{
+  "FirstName": "input",
+  "LastName": "input",
+  "UserName": "input",
+  "E-mail":"input",
+  "Password":"input",
+  "Confirm Password":"input",
+  "Birth Day":"date",
+  "Time":"time",
+  "Button":"button",
+  "동의 하시겠습니까?":"checkbox",
+  "감사합니다.":"text"
+}

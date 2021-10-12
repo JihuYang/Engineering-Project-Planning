@@ -1,0 +1,23 @@
+.App {
+  display:block;
+  margin:50px auto;
+  text-align: center;
+  border:1px solid black;
+  width:1000px;
+  padding:50px;
+}
+
+pre{
+  padding:0;
+  margin:0;
+  font-size: inherit;
+}
+
+p{
+  text-align: start;
+}
+
+Link{
+  text-decoration: none;
+}
+

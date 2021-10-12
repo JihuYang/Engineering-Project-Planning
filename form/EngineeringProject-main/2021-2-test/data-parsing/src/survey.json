@@ -1,0 +1,27 @@
+[
+  {
+    "이름": "input"
+  },
+  {
+    "성별":"text",
+    "남":"checkbox",
+    "여":"checkbox"
+  },
+  {
+    "나이":"text",
+    "-10대":"checkbox",
+    "-20대":"checkbox",
+    "-30대":"checkbox",
+    "-40대":"checkbox"
+  },
+  {
+    "취미는?":"text",
+    "-영화보기":"checkbox",
+    "-요리하기":"checkbox",
+    "-영화감상":"checkbox"
+  },
+  {
+    "제출":"text",
+    "확인":"button"
+  }
+]

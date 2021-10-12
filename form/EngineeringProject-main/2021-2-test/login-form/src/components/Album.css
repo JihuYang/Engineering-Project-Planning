@@ -1,0 +1,12 @@
+.menuBar{
+    border-radius: 0;
+    color:white;
+}
+
+.mainBtn{
+    min-width: 160px;
+}
+
+.navbar-toggler{
+    max-width: 55px;
+}

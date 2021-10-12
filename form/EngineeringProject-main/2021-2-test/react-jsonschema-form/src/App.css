@@ -1,0 +1,26 @@
+*{
+  font-size: 30px;
+}
+
+.App {
+  width: 80%;
+  margin: 10% auto;
+}
+
+.container{
+  display: flex;
+  min-height: 30em;
+}
+
+.json-editor{
+  width: 50%;
+  background: #333;
+  font-size: 30px;
+  color:white;
+}
+
+.new-form{
+  display: block;
+  width: 200px;
+  margin: 0 40px;
+}

@@ -1,0 +1,16 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ES2015",
+    "jsx": "react",
+    "lib": ["ES2015", "DOM"],
+    "moduleResolution": "Node",
+    "outDir": "dist/",
+
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "stripInternal": true
+  }
+}

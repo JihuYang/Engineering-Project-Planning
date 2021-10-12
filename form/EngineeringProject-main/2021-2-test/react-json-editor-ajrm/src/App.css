@@ -1,0 +1,11 @@
+.App {
+  width: 80%;
+  margin: 10% auto;
+}
+
+.container{
+  display: flex;
+  width: 800px;
+  margin: auto;
+  background-color: black;
+}
