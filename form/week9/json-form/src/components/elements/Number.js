@@ -4,7 +4,7 @@ import { FormContext } from '../../FormContext';
 const Number = ({ field_id, field_label, field_value, field_min, field_max }) => {
     const { handleChange } = useContext(FormContext)
     return (
-        <div className="mb-3">
+        <div className="mb-3 w-10">
             <label htmlFor="quantity" className="form-label">{field_label}</label>
             <input type="number" className="form-control" id="quantity" 
                 value = {field_value}

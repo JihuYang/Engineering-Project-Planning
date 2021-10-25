@@ -42,3 +42,25 @@
   width: 100%;
 }
 
+/* input width를 지정하기 위한 class */
+.w-10{
+  width: 10%;
+}
+
+.w-20{
+  width: 20%;
+}
+
+.w-30{
+  width: 30%;
+}
+
+.w-40{
+  width: 40%;
+}
+
+.glenda-1-hex { background-color: #ECCFC1; }
+.glenda-2-hex { background-color: #DFA6A2; }
+.glenda-3-hex { background-color: #68635F; }
+.glenda-4-hex { background-color: #81968F; }
+.glenda-5-hex { background-color: #D1D0B7; }

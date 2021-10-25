@@ -4,7 +4,7 @@ import { FormContext } from '../../FormContext';
 const Email = ({ field_id, field_label, field_placeholder, field_value }) => {
     const { handleChange } = useContext(FormContext)
     return (
-        <div className="mb-3">
+        <div className="d-flex mb-3 w-50">
             <label htmlFor="Email" className="form-label">{field_label}</label>
             <input type="email" className="form-control" id="Email" aria-describedby="email"
                 placeholder={field_placeholder ? field_placeholder : ''}
