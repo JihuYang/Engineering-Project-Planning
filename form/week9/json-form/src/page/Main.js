@@ -5,6 +5,7 @@ import React,{useState,useEffect} from 'react';
 import Element from '../components/Element';
 import { FormContext } from '../FormContext';
 import jsonSkeleton from '../components/elements/jsonSkeleton.json';
+import formElement from '../formElement.json';
 
 function Main() {
   const [clicked, setClicked] = useState(false);
@@ -35,7 +36,10 @@ function Main() {
   // };
 
   const onClickCreate = () => {
-    var schema = document.getElementById('json-editor').value;
+    var schema_str = JSON.stringify(formElement);
+    var schema = schema_str;
+    //var schema = document.getElementById('json-editor').value;
+    //var schema = "{formElement}";
     console.log(schema);
     var myobj=JSON.parse(schema);
     setElements(myobj);
