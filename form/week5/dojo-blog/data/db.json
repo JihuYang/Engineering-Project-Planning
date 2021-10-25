@@ -1,16 +1,6 @@
 {
   "blogs": [
     {
-      "id": 1,
-      "type": "text",
-      "fieldname": "이름"
-    },
-    {
-      "id": 2,
-      "type": "date",
-      "fieldname": "생년월일"
-    },
-    {
       "id": 3,
       "type": "text",
       "fieldname": "이메일 주소"
@@ -20,12 +10,6 @@
       "fieldname": "파일",
       "value": "",
       "id": 4
-    },
-    {
-      "type": "time",
-      "fieldname": "시간",
-      "value": "",
-      "id": 5
     },
     {
       "type": "date",
