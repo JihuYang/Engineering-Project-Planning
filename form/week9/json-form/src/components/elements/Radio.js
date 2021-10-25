@@ -5,7 +5,7 @@ const Radio = ({ field_id, field_label, field_value, field_options }) => {
 
     return (
         <>
-          <div className="mb-3">
+          <div className="input-group-prepend mb-3">
             <label className="form-label">{field_label}</label>
             {field_options.length > 0 && field_options.map((option) => 
                 <div class="form-check">

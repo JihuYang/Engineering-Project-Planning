@@ -16,7 +16,7 @@ const Datetime = ({ field_id, field_label, field_value, field_min, field_max }) 
     today = yyyy+'-'+mm+'-'+dd+'T00:00';
     
     return (
-        <div className="mb-3 w-50">
+        <div className="input-group-prepend mb-3 w-50">
             <label htmlFor="datetime" className="form-label">{field_label}</label>
             <input type="datetime-local" className="form-control" id="datetime" 
                 value = {field_value}

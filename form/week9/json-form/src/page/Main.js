@@ -98,7 +98,8 @@ function Main() {
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="App">
-        <Container>
+        <div class="container-fluid w-50">
+          {/* <Container>
           <FormGroup>
             <Label className="inputType">Input Type</Label>
             <Form>
@@ -120,38 +121,37 @@ function Main() {
               <hr />
             </Form>
           </FormGroup>
-        </Container>
-        <div className="editor-container">
-          <div className="editor-box" >
-            <div className="editor-head"><h5>JSONSchema</h5></div>
-            <textarea className="json-editor" id="json-editor" value={form} onChange={textChange}>{schema}</textarea>
+        </Container> */}
+          <div className="new-form">
             <Row>
               <Col>
-                <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickReset() }}>Reset</button>              </Col>
-              <Col>
-                <button className="btn btn-large btn-secondary create-btn" onClick={() => onClickCheck(1)} active={cSelected.includes(1)}>Check</button>
-              </Col>
-              <Col>
-                <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Create</button>
+                <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Create the Layout of the Form</button>
               </Col>
             </Row>
-          </div>
-          <div className="new-form">
-            <div class="container-fluid w-500">
-              {clicked ?
-                <form>
-                  <div class="row m-3 h-200">
-                    <div class="col glenda-2-hex d-flex align-items-center justify-content-center">
+            {clicked ?
+              <form>
+                <div class="row m-3 h-auto">
+                  <div class="col glenda-1-hex d-flex align-items-center justify-content-center">
                     <div class="input-group my-2">
                       {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
-                      </div>
                     </div>
                   </div>
-                </form>
+                </div>
+              </form>
 
+              : null}
+            {clicked ?
+              <form>
+                <div class="row m-3 h-auto">
+                  <div class="col glenda-2-hex">
+                    <div class="my-2">
+                      {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
+                    </div>
+                  </div>
+                </div>
+              </form>
 
-                : null}
-            </div>
+              : null}
           </div>
         </div>
       </div>

@@ -1,0 +1,62 @@
+{
+    "page_label": "이력서 Form",
+    "group": [
+        {
+            "group_name":  "General Info",
+            "fields": [
+                {
+                    "field_id": "english_name",
+                    "field_label": "이름",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "이름을 입력하세요",
+                    "field_type": "text",
+                    "field_value": ""
+                },
+                {
+                    "field_id": "employment",
+                    "field_label": "종류",
+                    "field_value": "Part-Time",
+                    "field_mandatory": "yes",
+                    "field_options": [
+                        {
+                            "option_label": "정직원"
+                        },
+                        {
+                            "option_label": "알바"
+                        }
+                    ],
+                    "field_type": "select"
+                }
+            ]
+        },
+        {
+            "group_name":  "Test2",
+            "fields": [
+                {
+                    "field_id": "english_name",
+                    "field_label": "이름",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "이름을 입력하세요",
+                    "field_type": "text",
+                    "field_value": ""
+                },
+                {
+                    "field_id": "employment",
+                    "field_label": "종류",
+                    "field_value": "Part-Time",
+                    "field_mandatory": "yes",
+                    "field_options": [
+                        {
+                            "option_label": "정직원"
+                        },
+                        {
+                            "option_label": "알바"
+                        }
+                    ],
+                    "field_type": "select"
+                }
+            ]
+        }
+    ]
+
+}

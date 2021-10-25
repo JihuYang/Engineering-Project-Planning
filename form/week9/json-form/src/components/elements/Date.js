@@ -4,7 +4,7 @@ import { FormContext } from '../../FormContext';
 const Date = ({ field_id, field_label, field_value, field_min, field_max }) => {
     const { handleChange } = useContext(FormContext)
     return (
-        <div className="d-flex mb-3 w-50">
+        <div className="input-group-prepend mb-3 w-50">
             <label htmlFor="date" className="form-label">{field_label}</label>
             <input type="date" className="form-control" id="date" 
                 value = {field_value}
