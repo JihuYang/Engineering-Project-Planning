@@ -21,6 +21,7 @@ function Main() {
   const [count, setCount] = useState(0);
 
   const { fields, page_label } = elements ?? {}
+   //const { group, page_label } = elements ?? {}
 
   useEffect(() => {
     setJson(jsonSkeleton);
@@ -134,7 +135,9 @@ function Main() {
                 <div class="row m-3 h-auto">
                   <div class="col glenda-1-hex d-flex align-items-center justify-content-center">
                     <div class="input-group my-2">
-                      {group ? group.map((field, i) => <Element key={i} field={field} />) : null}
+                      {/* {group ? group.map((field, i) => <Element key={i} field={field} />) : null} */}
+                      {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
+
                     </div>
                   </div>
                 </div>
