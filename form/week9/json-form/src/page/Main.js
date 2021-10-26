@@ -5,8 +5,8 @@ import React, { useState, useEffect } from 'react';
 import Element from '../components/Element';
 import { FormContext } from '../FormContext';
 import jsonSkeleton from '../components/elements/jsonSkeleton.json';
-import formElement from '../formElement.json';
-//import formElement from '../formGroupedElement.json';
+//import formElement from '../formElement.json';
+import formElement from '../formGroupedElement.json';
 
 function Main() {
   const [clicked, setClicked] = useState(false);
@@ -20,8 +20,8 @@ function Main() {
   const [json, setJson] = useState(null);
   const [count, setCount] = useState(0);
 
-  const { fields, page_label } = elements ?? {}
-   //const { group, page_label } = elements ?? {}
+  //const { fields, page_label } = elements ?? {}
+  const { group, page_label } = elements ?? {}
 
   useEffect(() => {
     setJson(jsonSkeleton);
@@ -135,21 +135,25 @@ function Main() {
                 <div class="row m-3 h-auto">
                   <div class="col glenda-1-hex d-flex align-items-center justify-content-center">
                     <div class="input-group my-2">
-                      {/* {group ? group.map((field, i) => <Element key={i} field={field} />) : null} */}
-                      {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
-
+                      {group.map((group, key) => {
+                        return (
+                          <div key={key}>
+                            {group.group_name}
+                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
               </form>
-
               : null}
             {clicked ?
               <form>
                 <div class="row m-3 h-auto">
                   <div class="col glenda-2-hex">
                     <div class="my-2">
-                      {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
+                      {/* {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null} */}
                     </div>
                   </div>
                 </div>
