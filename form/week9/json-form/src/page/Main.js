@@ -6,6 +6,7 @@ import Element from '../components/Element';
 import { FormContext } from '../FormContext';
 import jsonSkeleton from '../components/elements/jsonSkeleton.json';
 import formElement from '../formElement.json';
+//import formElement from '../formGroupedElement.json';
 
 function Main() {
   const [clicked, setClicked] = useState(false);
@@ -133,7 +134,7 @@ function Main() {
                 <div class="row m-3 h-auto">
                   <div class="col glenda-1-hex d-flex align-items-center justify-content-center">
                     <div class="input-group my-2">
-                      {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null}
+                      {group ? group.map((field, i) => <Element key={i} field={field} />) : null}
                     </div>
                   </div>
                 </div>
