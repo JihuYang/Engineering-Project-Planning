@@ -10,61 +10,26 @@ import formElement from '../formGroupedElement.json';
 
 function Main() {
   const [clicked, setClicked] = useState(false);
-  const [schema, setSchema] = useState();
   const [elements, setElements] = useState(null);
   // const [form, setForm] = useState('{\n"page_label": "이력서 Form",\
   // "fields": [{}');
-  const [form, setForm] = useState('{\n"page_label": "이력서 Form",\n"fields": [\n');
-  const [rSelected, setRSelected] = useState(null);
-  const [cSelected, setCSelected] = useState([]);
   const [json, setJson] = useState(null);
-  const [count, setCount] = useState(0);
 
   //const { fields, page_label } = elements ?? {}
-  const { group, page_label } = elements ?? {}
+  const { group, fields } = elements ?? {}
 
   useEffect(() => {
     setJson(jsonSkeleton);
   }, [])
 
-  const textChange = (e) => {
-    setForm(e.target.value);
-  }
-
-
-  // const onCreate = () => {
-  //   setForm(form + "\n]}");
-  //   onCreate();
-  // };
-
   const onClickCreate = () => {
     var schema_str = JSON.stringify(formElement);
     var schema = schema_str;
-    //var schema = document.getElementById('json-editor').value;
-    //var schema = "{formElement}";
     console.log(schema);
     var myobj = JSON.parse(schema);
     setElements(myobj);
     setClicked(true);
   };
-
-  const onClickCheck = (selected) => {
-    const index = cSelected.indexOf(selected);
-    if (index < 0) {
-      cSelected.push(selected);
-    } else {
-      cSelected.splice(index, 1);
-    }
-    setCSelected([...cSelected]);
-
-    if (cSelected.length != 0) {
-      setForm(form + "\n]}");
-    }
-  }
-
-  const onClickReset = () => {
-    setForm("");
-  }
 
   const handleChange = (id, event) => {
     const newElements = { ...elements }
@@ -86,84 +51,62 @@ function Main() {
     console.log(elements)
   }
 
-  const addJson = e => {
-    setRSelected(e);
-    if (count == 0) {
-      setForm(form + JSON.stringify(json[e], null, 4));
-    }
-    else {
-      setForm(form + "," + JSON.stringify(json[e], null, 4));
-    }
-    setCount(count + 1);
-  }
-
   return (
     <FormContext.Provider value={{ handleChange }}>
       <div className="App">
         <div class="container-fluid w-50">
-          {/* <Container>
-          <FormGroup>
-            <Label className="inputType">Input Type</Label>
-            <Form>
-              <Button outline color="danger" onClick={() => addJson(0)} active={rSelected === 0}>Text</Button>{' '}
-              <Button outline color="warning" onClick={() => addJson(1)} active={rSelected === 1}>Select</Button>{' '}
-              <Button outline color="success" onClick={() => addJson(2)} active={rSelected === 2}>Checkbox</Button>{' '}
-              <Button outline color="info" onClick={() => addJson(3)} active={rSelected === 3}>Color</Button>{' '}
-              <Button outline color="primary" onClick={() => addJson(4)} active={rSelected === 4}>Email</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(5)} active={rSelected === 5}>Date</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(6)} active={rSelected === 6}>Datetime</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(7)} active={rSelected === 7}>Month</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(8)} active={rSelected === 8}>File</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(9)} active={rSelected === 9}>Number</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(10)} active={rSelected === 10}>Telephone</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(11)} active={rSelected === 11}>Range</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(12)} active={rSelected === 12}>Textarea</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(13)} active={rSelected === 13}>Radio</Button>{' '}
-              <Button outline color="secondary" onClick={() => addJson(14)} active={rSelected === 14}>Button</Button>{' '}
-              <hr />
-            </Form>
-          </FormGroup>
-        </Container> */}
+          <Row>
+            <Col>
+              <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
+            </Col>
+          </Row>
+          <h4 class="text-center my-3">Layout Version 1</h4>
+          <hr></hr>
           <div className="new-form">
-            <Row>
-              <Col>
-                <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Create the Layout of the Form</button>
-              </Col>
-            </Row>
             {clicked ?
               <form>
-                <div class="row m-3 h-auto">
-                  <div class="col glenda-1-hex d-flex align-items-center justify-content-center">
-                    <div class="input-group my-2">
-                      {group.map((group, key) => {
-                        return (
-                          <div key={key}>
-                            {group.group_name}
+                {group.map((group, key) => {
+                  return (
+                    <div key={key}>
+                      <div class="mx-4 my-2">
+                        <h6>{group.group_name}</h6>
+                      </div>
+                      <div class="row m-3 h-auto border">
+                        <div class="col d-flex align-items-center justify-content-center">
+                          <div class="input-group my-2">
                             {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
                           </div>
-                        );
-                      })}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </form>
               : null}
+          </div>
+          <h4 class="text-center my-3">Layout Version 2</h4>
+          <hr></hr>
+          <div className="new-form">
             {clicked ?
               <form>
-                <div class="row m-3 h-auto">
-                  <div class="col glenda-2-hex">
-                    <div class="my-2">
-                      {/* {fields ? fields.map((field, i) => <Element key={i} field={field} />) : null} */}
+                {group.map((group, key) => {
+                  return (
+                    <div key={key}>
+                      <div class="mx-4 my-2 text-center">
+                        <h6>{group.group_name}</h6>
+                      </div>
+                      <div class="m-3 border">
+                      {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
               </form>
-
               : null}
           </div>
         </div>
       </div>
-    </FormContext.Provider>
+    </FormContext.Provider >
   );
 }
 

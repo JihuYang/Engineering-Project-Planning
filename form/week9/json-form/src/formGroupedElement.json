@@ -5,6 +5,12 @@
             "group_name":  "General Info",
             "fields": [
                 {
+                    "field_id": "photo",
+                    "field_label": "사진",
+                    "field_mandatory": "yes",
+                    "field_type": "file"
+                },
+                {
                     "field_id": "english_name",
                     "field_label": "이름",
                     "field_mandatory": "yes",
@@ -13,16 +19,70 @@
                     "field_value": ""
                 },
                 {
-                    "field_id": "employment",
-                    "field_label": "종류",
-                    "field_value": "Part-Time",
+                    "field_id": "address",
+                    "field_label": "주소",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "주소를 입력하세요",
+                    "field_type": "text",
+                    "field_value": ""
+                },
+                {
+                    "field_id": "phone_num",
+                    "field_label": "전화번호",
+                    "field_mandatory": "",
+                    "field_placeholder": "010-****-****",
+                    "field_value": "",
+                    "field_pattern":"[0-9]{3}-[0-9]{4}-[0-9]{4}",
+                    "field_type": "tel"
+                },
+                {
+                    "field_id": "email",
+                    "field_label": "이메일을 입력하세요",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "abc@example.com",
+                    "field_value": "",
+                    "field_type": "email"
+                }
+            ]
+        },
+        {
+            "group_name":  "학력",
+            "fields": [
+                {
+                    "field_id": "graduate_date",
+                    "field_label": "졸업년월",
+                    "field_mandatory": "yes",
+                    "field_value": "",
+                    "field_min": "1950-01-01",
+                    "filed_max": "2022-12-31",
+                    "field_type": "date"
+                },{
+                    "field_id": "school_name",
+                    "field_label": "학교명",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "학교명을 입력하세요",
+                    "field_type": "text",
+                    "field_value": ""
+                },{
+                    "field_id": "major",
+                    "field_label": "전공",
+                    "field_value": "",
                     "field_mandatory": "yes",
                     "field_options": [
                         {
-                            "option_label": "정직원"
+                            "option_label": "전산학과"
                         },
                         {
-                            "option_label": "알바"
+                            "option_label": "기계공학과"
+                        },
+                        {
+                            "option_label": "전자공학과"
+                        },
+                        {
+                            "option_label": "생물학과"
+                        },
+                        {
+                            "option_label": "도시공학과"
                         }
                     ],
                     "field_type": "select"
@@ -30,30 +90,82 @@
             ]
         },
         {
-            "group_name":  "Test2",
+            "group_name":  "경력",
             "fields": [
                 {
-                    "field_id": "english_name",
-                    "field_label": "이름",
+                    "field_id": "start_date",
+                    "field_label": "근무시작일",
                     "field_mandatory": "yes",
-                    "field_placeholder": "이름을 입력하세요",
+                    "field_value": "",
+                    "field_min": "1950-01-01",
+                    "filed_max": "2022-12-31",
+                    "field_type": "date"
+                },{
+                    "field_id": "stop_date",
+                    "field_label": "근무종료일",
+                    "field_mandatory": "yes",
+                    "field_value": "",
+                    "field_min": "1950-01-01",
+                    "filed_max": "2022-12-31",
+                    "field_type": "date"
+                },{
+                    "field_id": "cop_name",
+                    "field_label": "근무처",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "",
+                    "field_type": "text",
+                    "field_value": ""
+                },{
+                    "field_id": "status",
+                    "field_label": "직책",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "",
                     "field_type": "text",
                     "field_value": ""
                 },
                 {
-                    "field_id": "employment",
-                    "field_label": "종류",
-                    "field_value": "Part-Time",
+                    "field_id": "comment",
+                    "field_label": "업무내용",
+                    "field_placeholder": "",
+                    "field_value": "",
+                    "field_cols": "500",
+                    "field_rows":"10",
+                    "field_maxlength": "1000",
+                    "field_type": "textarea"
+                }
+            ]
+        },{
+            "group_name":  "자격증",
+            "fields": [
+                {
+                    "field_id": "get_date",
+                    "field_label": "취득년월",
                     "field_mandatory": "yes",
-                    "field_options": [
-                        {
-                            "option_label": "정직원"
-                        },
-                        {
-                            "option_label": "알바"
-                        }
-                    ],
-                    "field_type": "select"
+                    "field_value": "",
+                    "field_min": "1950-01-01",
+                    "filed_max": "2022-12-31",
+                    "field_type": "date"
+                },{
+                    "field_id": "name",
+                    "field_label": "자격증",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "",
+                    "field_type": "text",
+                    "field_value": ""
+                },
+                {
+                    "field_id": "cop",
+                    "field_label": "시행처",
+                    "field_mandatory": "yes",
+                    "field_placeholder": "",
+                    "field_type": "text",
+                    "field_value": ""
+                },
+                {
+                    "field_id": "submint button",
+                    "field_label": "Submit",
+                    "field_value": "",
+                    "field_type": "button"
                 }
             ]
         }

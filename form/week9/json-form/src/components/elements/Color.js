@@ -4,7 +4,7 @@ import { FormContext } from '../../FormContext';
 const Color = ({ field_id, field_label, field_value }) => {
     const { handleChange } = useContext(FormContext)
     return (
-        <div class="input-group-prepend mb-3">
+        <div class="input-group-prepend m-3">
             <label htmlFor="favcolor" className="form-label">{field_label}</label>
             <input type="color" className="form-control" id="favcolor"
                 value={field_value}

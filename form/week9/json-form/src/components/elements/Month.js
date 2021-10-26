@@ -4,7 +4,7 @@ import { FormContext } from '../../FormContext';
 const Month = ({ field_id, field_label, field_value, field_min, field_max }) => {
     const { handleChange } = useContext(FormContext)
     return (
-        <div className="input-group-prepend mb-3">
+        <div className="input-group-prepend m-3">
             <label htmlFor="Month" className="form-label">{field_label}</label>
             <input type="month" className="form-control" id="month" 
                 value = {field_value}

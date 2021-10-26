@@ -4,7 +4,7 @@ const Select = ({ field_id, field_label, field_options }) => {
     const { handleChange } = useContext(FormContext)
 
     return (
-        <div className="input-group-prepend w-50 mb-3">
+        <div className="input-group-prepend m-3">
             <label className="form-label">{field_label}</label>
             <select className="form-select" aria-label="Default select example"
                 onChange={event => handleChange(field_id, event)}
