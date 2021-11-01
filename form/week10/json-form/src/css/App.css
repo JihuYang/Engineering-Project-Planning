@@ -40,6 +40,16 @@
   width: 100%;
 }
 
+.tabs li{
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  padding: 1rem;
+  color: #68635F;
+}
+.is-active{
+  color: black !important;
+}
 /* input width를 지정하기 위한 class */
 .w-10{
   width: 10% !important;

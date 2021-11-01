@@ -18,124 +18,141 @@ import Radio from './elements/Radio';
 const Element = ({ group : { group_name, fields } }) => {
     
     return group_name = {group_name},
-    ({ fields: { field_type, field_id, field_label, field_placeholder, field_value, field_options, field_min, field_max, field_pattern, field_cols,field_rows, field_maxlength } }) => {
+    ({ fields: { type, id, label, placeholder, value,input, options, min, max, pattern, cols,rows, maxlength, width } }) => {
 
-    switch (field_type) {
+    switch (type) {
         case 'text':
+            const idname = 'text'+{id};
             return (<Input
-                field_id={field_id}
-                field_label={field_label}
-                field_placeholder={field_placeholder}
-                field_value={field_value}
+                fid={idname}
+                label={label}
+                placeholder={placeholder}
+                value={value}
+                ref={input}
+                width = {width}
 
             />)
         case 'select':
             return (<Select
-                field_id={field_id}
-                field_label={field_label}
-                field_placeholder={field_placeholder}
-                field_value={field_value}
-                field_options={field_options}
+                id={id}
+                label={label}
+                placeholder={placeholder}
+                value={value}
+                options={options}
+                width = {width}
             />)
         case 'checkbox':
             return (<Checkbox
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
+                id={id}
+                label={label}
+                value={value}
+                width = {width}
             />)
         case 'color':
             return (<Color
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
+                id={id}
+                label={label}
+                value={value}
+                width = {width}
             />)
 
         case 'date':
             return (<Date
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_min = {field_min}
-                field_max = {field_max}
+                id={id}
+                label={label}
+                value={value}
+                min = {min}
+                max = {max}
+                width = {width}
             />)
         case 'datetime-local':
             return (<Datetime
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_min = {field_min}
-                field_max = {field_max}
+                id={id}
+                label={label}
+                value={value}
+                min = {min}
+                max = {max}
+                width = {width}
             />)
         case 'month':
             return (<Month
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_min = {field_min}
-                field_max = {field_max}
+                id={id}
+                label={label}
+                value={value}
+                min = {min}
+                max = {max}
+                width = {width}
             />)
         case 'email':
             return (<Email
-                field_id={field_id}
-                field_label={field_label}
-                field_placeholder={field_placeholder}
-                field_value={field_value}
+                id={id}
+                label={label}
+                placeholder={placeholder}
+                value={value}
+                width = {width}
             />)
 
         case 'file':
             return (<File
-                field_id={field_id}
-                field_label={field_label}
+                id={id}
+                label={label}
+                width = {width}
             />)
 
         case 'number':
             return (<Number
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_min = {field_min}
-                field_max = {field_max}
+                id={id}
+                label={label}
+                value={value}
+                min = {min}
+                max = {max}
+                width = {width}
             />)
         case 'tel':
             return (<Telephone
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_placeholder={field_placeholder}
-                field_pattern={field_pattern}
+                id={id}
+                label={label}
+                value={value}
+                placeholder={placeholder}
+                pattern={pattern}
+                width = {width}
                 
             />)
         case 'range':
             return (<Range
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_min = {field_min}
-                field_max = {field_max}                    
+                fid={id}
+                label={label}
+                value={value}
+                min = {min}
+                max = {max} 
+                width = {width}                   
             />)
         case 'textarea':
             return (<Textarea
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}
-                field_placeholder={field_placeholder}
-                field_cols = {field_cols}
-                field_rows = {field_rows} 
-                field_maxlength = {field_maxlength}                      
+                id={id}
+                label={label}
+                value={value}
+                placeholder={placeholder}
+                cols = {cols}
+                rows = {rows} 
+                maxlength = {maxlength} 
+                width = {width}                               
             />)
         case 'button':
             return (<Button
-                field_id={field_id}
-                field_label={field_label}
-                field_value={field_value}                    
+                id={id}
+                label={label}
+                value={value}
+                width = {width}                    
             />)
 
         case 'radio':
             return (<Radio
-                field_id={field_id}
-                field_label={field_label}
-                field_value = {field_value}
-                field_options={field_options}
+                id={id}
+                label={label}
+                value = {value}
+                options={options}
+                width = {width}
             />)
         default:
             return null;

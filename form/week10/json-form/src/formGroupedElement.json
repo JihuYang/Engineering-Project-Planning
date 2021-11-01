@@ -5,43 +5,48 @@
             "group_name":  "",
             "fields": [
                 {
-                    "field_id": "photo",
-                    "field_label": "사진",
-                    "field_mandatory": "yes",
-                    "field_type": "file"
+                    "id": "photo",
+                    "label": "사진",
+                    "mandatory": "yes",
+                    "type": "file",
+                    "width": "5"
                 },
                 {
-                    "field_id": "english_name",
-                    "field_label": "이름",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "이름을 입력하세요",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "english_name",
+                    "label": "이름",
+                    "mandatory": "yes",
+                    "placeholder": "이름을 입력하세요",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },
                 {
-                    "field_id": "address",
-                    "field_label": "주소",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "주소를 입력하세요",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "address",
+                    "label": "주소",
+                    "mandatory": "yes",
+                    "placeholder": "주소를 입력하세요",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },
                 {
-                    "field_id": "phone_num",
-                    "field_label": "전화번호",
-                    "field_mandatory": "",
-                    "field_placeholder": "010-****-****",
-                    "field_value": "",
-                    "field_pattern":"[0-9]{3}-[0-9]{4}-[0-9]{4}",
-                    "field_type": "tel"
+                    "id": "phone_num",
+                    "label": "전화번호",
+                    "mandatory": "",
+                    "placeholder": "010-****-****",
+                    "value": "",
+                    "pattern":"[0-9]{3}-[0-9]{4}-[0-9]{4}",
+                    "type": "tel",
+                    "width": "6"
                 },
                 {
-                    "field_id": "email",
-                    "field_label": "이메일을 입력하세요",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "abc@example.com",
-                    "field_value": "",
-                    "field_type": "email"
+                    "id": "email",
+                    "label": "이메일을 입력하세요",
+                    "mandatory": "yes",
+                    "placeholder": "abc@example.com",
+                    "value": "",
+                    "type": "email",
+                    "width": "4"
                 }
             ]
         },
@@ -49,26 +54,28 @@
             "group_name":  "학력",
             "fields": [
                 {
-                    "field_id": "graduate_date",
-                    "field_label": "졸업년월",
-                    "field_mandatory": "yes",
-                    "field_value": "",
-                    "field_min": "1950-01-01",
+                    "id": "graduate_date",
+                    "label": "졸업년월",
+                    "mandatory": "yes",
+                    "value": "",
+                    "min": "1950-01-01",
                     "filed_max": "2022-12-31",
-                    "field_type": "date"
+                    "type": "date",
+                    "width": "7"
                 },{
-                    "field_id": "school_name",
-                    "field_label": "학교명",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "학교명을 입력하세요",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "school_name",
+                    "label": "학교명",
+                    "mandatory": "yes",
+                    "placeholder": "학교명을 입력하세요",
+                    "type": "text",
+                    "value": "",
+                    "width": "4"
                 },{
-                    "field_id": "major",
-                    "field_label": "전공",
-                    "field_value": "",
-                    "field_mandatory": "yes",
-                    "field_options": [
+                    "id": "major",
+                    "label": "전공",
+                    "value": "",
+                    "mandatory": "yes",
+                    "options": [
                         {
                             "option_label": "전산학과"
                         },
@@ -85,7 +92,8 @@
                             "option_label": "도시공학과"
                         }
                     ],
-                    "field_type": "select"
+                    "type": "select",
+                    "width": "5"
                 }
             ]
         },
@@ -93,79 +101,88 @@
             "group_name":  "경력",
             "fields": [
                 {
-                    "field_id": "start_date",
-                    "field_label": "근무시작일",
-                    "field_mandatory": "yes",
-                    "field_value": "",
-                    "field_min": "1950-01-01",
+                    "id": "start_date",
+                    "label": "근무시작일",
+                    "mandatory": "yes",
+                    "value": "",
+                    "min": "1950-01-01",
                     "filed_max": "2022-12-31",
-                    "field_type": "date"
+                    "type": "date",
+                    "width": "4"
                 },{
-                    "field_id": "stop_date",
-                    "field_label": "근무종료일",
-                    "field_mandatory": "yes",
-                    "field_value": "",
-                    "field_min": "1950-01-01",
+                    "id": "stop_date",
+                    "label": "근무종료일",
+                    "mandatory": "yes",
+                    "value": "",
+                    "min": "1950-01-01",
                     "filed_max": "2022-12-31",
-                    "field_type": "date"
+                    "type": "date",
+                    "width": "4"
                 },{
-                    "field_id": "cop_name",
-                    "field_label": "근무처",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "cop_name",
+                    "label": "근무처",
+                    "mandatory": "yes",
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },{
-                    "field_id": "status",
-                    "field_label": "직책",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "status",
+                    "label": "직책",
+                    "mandatory": "yes",
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },
                 {
-                    "field_id": "comment",
-                    "field_label": "업무내용",
-                    "field_placeholder": "",
-                    "field_value": "",
-                    "field_cols": "500",
-                    "field_rows":"10",
-                    "field_maxlength": "1000",
-                    "field_type": "textarea"
+                    "id": "comment",
+                    "label": "업무내용",
+                    "placeholder": "",
+                    "value": "",
+                    "cols": "500",
+                    "rows":"10",
+                    "maxlength": "1000",
+                    "type": "textarea",
+                    "width": "5"
                 }
             ]
         },{
             "group_name":  "자격증",
             "fields": [
                 {
-                    "field_id": "get_date",
-                    "field_label": "취득년월",
-                    "field_mandatory": "yes",
-                    "field_value": "",
-                    "field_min": "1950-01-01",
+                    "id": "get_date",
+                    "label": "취득년월",
+                    "mandatory": "yes",
+                    "value": "",
+                    "min": "1950-01-01",
                     "filed_max": "2022-12-31",
-                    "field_type": "date"
+                    "type": "date",
+                    "width": "5"
                 },{
-                    "field_id": "name",
-                    "field_label": "자격증",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "name",
+                    "label": "자격증",
+                    "mandatory": "yes",
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },
                 {
-                    "field_id": "cop",
-                    "field_label": "시행처",
-                    "field_mandatory": "yes",
-                    "field_placeholder": "",
-                    "field_type": "text",
-                    "field_value": ""
+                    "id": "cop",
+                    "label": "시행처",
+                    "mandatory": "yes",
+                    "placeholder": "",
+                    "type": "text",
+                    "value": "",
+                    "width": "5"
                 },
                 {
-                    "field_id": "submint button",
-                    "field_label": "Submit",
-                    "field_value": "",
-                    "field_type": "button"
+                    "id": "submint button",
+                    "label": "Submit",
+                    "value": "",
+                    "type": "button",
+                    "width": "2"
                 }
             ]
         }
