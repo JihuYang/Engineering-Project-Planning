@@ -11,6 +11,7 @@ import style from '../components/style/style.txt';
 import axios from 'axios';
 
 
+
 function Main() {
 //   const onClickRead = () => {    
 //     var data="read";
@@ -34,6 +35,7 @@ function Main() {
   
   const [clicked, setClicked] = useState(false);
   const [elements, setElements] = useState(null);
+  const [isOpen, setJsonFile] = useState(false);
   // const [form, setForm] = useState('{\n"page_label": "이력서 Form",\
   // "fields": [{}');
   const [json, setJson] = useState(null);
@@ -42,6 +44,8 @@ function Main() {
   const { group, fields } = elements ?? {}
 
   const [content, setContent] = useState(null);
+
+  const [activeIndex, setActiveIndex]=useState(0);
 
   useEffect(() => {
     setJson(jsonSkeleton);
@@ -113,6 +117,86 @@ function Main() {
   //   element.click();
   // };
 
+  const onClickGetJson = () => {
+    setJsonFile(isOpen => !isOpen);
+    //var schema_str = JSON.stringify(formElement);
+    console.log(isOpen);
+  };
+
+  const tabClickHandler=(index)=>{
+    setActiveIndex(index);
+};
+
+  const tabContArr=[
+    {
+        tabTitle:(
+            <li className={activeIndex===0 ? "is-active" : ""} onClick={()=>tabClickHandler(0)}> Version1 </li>
+        ),
+        tabCont:(
+            <div>
+              <h4 class="text-center my-3">Layout Version 1</h4>
+              <hr></hr>
+              <div className="new-form">
+                {clicked ?
+                  <form>
+
+                    {group.map((group, key) => {
+                      return (
+                        <div key={key}>
+                          <div class="mx-4 my-2">
+                            <h6>{group.group_name}</h6>
+                            {/* {group.fields.length} */}
+                            {/* {Math.floor((Math.random() * (group.fields.length-0+1)) + 0)} */}
+
+                          </div>
+                          <div class="row m-3 h-auto border">
+                            <div class="col d-flex align-items-center justify-content-center">
+                              <div class="input-group my-2">
+                                {/* {group.fields.length} */}
+                                {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </form>
+                  : null}
+              </div>
+            </div>
+        )
+    },
+    {
+        tabTitle:(
+            <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)}> Version2 </li>
+        ),
+        tabCont:(
+            <div>
+              <h4 class="text-center my-3">Layout Version 2</h4>
+              <hr></hr>
+              <div className="new-form">
+                {clicked ?
+                  <form>
+                    {group.map((group, key) => {
+                      return (
+                        <div key={key}>            <div class="mx-4 my-2 text-center">
+
+                          <h6>{group.group_name}</h6>
+                        </div>
+                          <div class="m-3 border">
+                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </form>
+                  : null}
+              </div>
+            </div>
+        )
+    }
+  ];
+
   const handleChange = (id, event) => {
     const newElements = { ...elements }
     newElements.fields.forEach(field => {
@@ -139,69 +223,33 @@ function Main() {
     <FormContext.Provider value={{ handleChange }}>
       <div className="App" id = "main">
         <div class="container-fluid w-50">
-          <Row>
+        <Row>
             <Col>
-              <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate()}}>Check out the Various Layouts of the Form</button>
+                <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => {onClickGetJson() }}>Get Json File Source</button>
             </Col>
           </Row>
-          <div>
-            <form>  
-              <div class="m-3 text-center">
-              Save 
-              <input type="radio" id="Version1" value="Version1"></input> Version1
-              <input type="radio" id="Version2" value="Version1"></input> Version2
-              <button className="btn btn-large btn-secondary create-btn" onClick={() => {download();onClickSave();}}>save</button>
+          <Row style={{display: isOpen ? 'block' : 'none' }}>
+            <div><pre>{JSON.stringify(formElement, null, 2) }</pre></div>
+          </Row>
+          <Row>
+            <Col>
+              <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className="menuBar">
+                <ul className="tabs is-boxed">
+                  {tabContArr.map((section, index)=>{
+                      return section.tabTitle
+                  })}
+                </ul>
+                <div>
+                  {tabContArr[activeIndex].tabCont}
+                </div>
               </div>
-            </form>
-          </div>
-          <h4 class="text-center my-3">Layout Version 1</h4>
-          <hr></hr>
-          <div className="new-form" id="new-form">
-            {clicked ?
-              <form>
-
-                {group.map((group, key) => {
-                  return (
-                    <div key={key}>
-                      <div class="mx-4 my-2">
-                        <h6>{group.group_name}</h6>
-                        {/* {group.fields.length} */}
-                        {/* {Math.floor((Math.random() * (group.fields.length-0+1)) + 0)} */}
-
-                      </div>
-                      <div class="row m-3 h-auto border">
-                        <div class="col d-flex align-items-center justify-content-center">
-                          <div class="input-group my-2">
-                            {/* {group.fields.length} */}
-                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </form>
-              : null}
-          </div>
-          <h4 class="text-center my-3">Layout Version 2</h4>
-          <hr></hr>
-          <div className="new-form">
-            {clicked ?
-              <form>
-                {group.map((group, key) => {
-                  return (
-                    <div key={key}>            <div class="mx-4 my-2 text-center">
-                      <h6>{group.group_name}</h6>
-                    </div>
-                      <div class="m-3 border">
-                        {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
-                      </div>
-                    </div>
-                  );
-                })}
-              </form>
-              : null}
-          </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </FormContext.Provider >
