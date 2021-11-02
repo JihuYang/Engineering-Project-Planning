@@ -190,42 +190,39 @@ function Main() {
     <FormContext.Provider value={{ handleChange }}>
       <div className="App">
         <div class="container-fluid w-50">
-          <Col>
-            <button className="btn btn-small btn-outline-warning get-json-source mb-3" onClick={() => { onClickRead(); }}>Get File List</button>
-            <ul className={isShow ? "show-menu" : "hide-menu"}>
-              <li style={{listStyle:'none'}}>
-                <div>
-                  <ul class="list-group list-group-flush">
-                    {fileList.map((file, index) => (
-                      <span key={index}>
-                        <li class="list-group-item">{file}</li>
-                      </span>
-                    ))}
-                    </ul>
-                </div>
-              </li>
-
-            </ul>
-          </Col>
-          <Row>
-            <Col>
-              <button className="btn btn-small btn-outline-dark get-json-source mb-3" onClick={() => { onClickGetJson() }}>Get Json File Source</button>
+          <Row className="d-flex justify-content-start">
+            <Col >
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead();}}>File List</button>
+              <ul className={isShow ? "show-menu" : "hide-menu"}>
+                <li style={{listStyle:'none'}}>
+                  <div>
+                    <ul class="list-group list-group-flush">
+                      {fileList.map((file, index) => (
+                        <span key={index}>
+                          <li class="list-group-item">{file}</li>
+                        </span>
+                      ))}
+                      </ul>
+                  </div>
+                </li>
+              </ul>
             </Col>
-            <Col className="d-flex justify-content-end">
-              <button className="btn btn-small btn-outline-success get-json-source mb-3" onClick={() => { onClickTXT(); download(); }}>Save</button>
+            <Col>
+              <button className="btn btn-small btn-outline-dark get-json-source mb-3 create-btn" onClick={() => { onClickGetJson() }}>Json Source</button>
+            </Col>
+            <Col>
+              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Result</button>
+            </Col>
+            <Col>
+              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { onClickTXT(); download(); }}>Save</button>
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
             <div><pre>{JSON.stringify(formElement, null, 2)}</pre></div>
           </Row>
-          <Row>
-            <Col>
-              <button className="btn btn-large btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
-            </Col>
-          </Row>
           <Row  >
             <Col>
-              <div className="menuBar" >
+              <div className="menuBar">
                 <ul className="tabs is-boxed">
                   {tabContArr.map((section, index) => {
                     return section.tabTitle
