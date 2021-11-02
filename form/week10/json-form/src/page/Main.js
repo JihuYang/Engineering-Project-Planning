@@ -6,7 +6,7 @@ import Element from '../components/Element';
 import { FormContext } from '../FormContext';
 import jsonSkeleton from '../components/elements/jsonSkeleton.json';
 //import formElement from '../formElement.json';
-import formElement from '../formGroupedElement.json';
+//import formElement from '../formGroupedElement.json';
 import style from '../components/style/style.txt';
 import axios from 'axios';
 const path = '../components/elements/jsonSkeleton.json';
@@ -128,7 +128,6 @@ function Main() {
           <div className="new-form" >
             {clicked ?
               <form>
-
                 {group.map((group, key) => {
                   return (
                     <div key={key}>
@@ -239,7 +238,7 @@ function Main() {
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
-            <div><pre>{JSON.stringify(formElement, null, 2)}</pre></div>
+            <div><pre>{JSON.stringify(dataFile, null, 2)}</pre></div>
           </Row>
           <Row  >
             <Col>
