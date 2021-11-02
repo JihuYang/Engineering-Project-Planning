@@ -19,6 +19,7 @@ function Main() {
   const [clicked, setClicked] = useState(false);
   const [elements, setElements] = useState(null);
   const [isOpen, setJsonFile] = useState(false);
+  const [isShow, setList] = useState(false);
   // const [form, setForm] = useState('{\n"page_label": "이력서 Form",\
   // "fields": [{}');
   const [json, setJson] = useState(null);
@@ -75,7 +76,6 @@ function Main() {
   //   //document.getElementById("save").appendChild(para);
   // }
 
-
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
@@ -112,6 +112,8 @@ function Main() {
       .catch(function (error) {
         console.log(error);
       });
+      //fileList toggle
+      setList(isShow => !isShow);
   };
   const onClickTXT = () => {
     axios.get('http://localhost:3010/api/readTXT')
@@ -241,15 +243,19 @@ function Main() {
       <div className="App">
         <div class="container-fluid w-50">
         <Col>
-              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { onClickRead(); onClickTXT();}}>Get Json File Source</button>
-              {fileList} 
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3" onClick={() => { onClickRead(); onClickTXT();}}>Get File List</button>
+              <ul className={isShow ? "show-menu" : "hide-menu"}>
+                <li>
+                  {fileList} 
+                </li>
+              </ul>
             </Col>
           <Row>
             <Col>
-              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { onClickGetJson() }}>Get Json File Source</button>
+              <button className="btn btn-small btn-outline-dark get-json-source mb-3" onClick={() => { onClickGetJson() }}>Get Json File Source</button>
             </Col>
-            <Col>
-              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { download() }}>Save</button>
+            <Col className="d-flex justify-content-end">
+              <button className="btn btn-small btn-outline-success get-json-source mb-3" onClick={() => { download() }}>Save</button>
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
@@ -257,7 +263,7 @@ function Main() {
           </Row>
           <Row>
             <Col>
-              <button className="btn btn-large btn-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
+              <button className="btn btn-large btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
             </Col>
           </Row>
           <Row>

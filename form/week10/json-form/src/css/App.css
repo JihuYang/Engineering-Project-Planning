@@ -45,11 +45,29 @@
   font-weight: bold;
   display: inline-block;
   padding: 1rem;
-  color: #68635F;
+  color: lightgray;
 }
 .is-active{
   color: black !important;
 }
+
+.show-menu{
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: 0px;
+  transition: 1s;
+  }
+  
+  .hide-menu{
+  width: 376px;
+  height: 500px;
+  position: absolute;
+  left: -376px;
+  transition: 1s;
+  }
+
+
 /* input width를 지정하기 위한 class */
 .w-10{
   width: 10% !important;
