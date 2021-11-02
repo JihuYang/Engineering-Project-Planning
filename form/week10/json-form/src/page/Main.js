@@ -20,31 +20,11 @@ function Main() {
   const [elements, setElements] = useState(null);
   const [isOpen, setJsonFile] = useState(false);
   const [isShow, setList] = useState(false);
-  // const [form, setForm] = useState('{\n"page_label": "이력서 Form",\
-  // "fields": [{}');
   const [json, setJson] = useState(null);
-  const [fileList, setFileList] = useState([ 'style.txt',
-  'test.json',
-  'undefined.json',
-  '양지후 Form.json',
-  '이력서 Form.json']);
-  // fileList = [
-  //   'style.txt',
-  //   'test.json',
-  //   'undefined.json',
-  //   '양지후 Form.json',
-  //   '이력서 Form.json'
-  // ];
-  // setFileList([
-  //   'style.txt',
-  //   'test.json',
-  //   'undefined.json',
-  //   '양지후 Form.json',
-  //   '이력서 Form.json'
-  // ]);
+  const [fileList, setFileList] = useState([
+    'test.json']);
+
   const [styleFile, setStyleFile] = useState("test");
-  // setStyleFile("test");
-  //const { fields, page_label } = elements ?? {}
   const { group, fields } = elements ?? {}
 
 
@@ -62,46 +42,21 @@ function Main() {
     setElements(myobj);
     setClicked(true);
   };
-  // const download = () => {
-  //   var para = document.createElement("div");
-  //   const element = document.createElement("a");
-  //   para.innerHTML = document.getElementById("main").innerHTML;
-  //   element.href = URL.createObjectURL(para);
-  //   element.download = para.innerHTML+".txt";
-  //   document.body.appendChild(element); // Required for this to work in FireFox
-  //   element.click();
-  //   setContent(para);
-  //   console.log(para);
-  //   alert(para);
-  //   //document.getElementById("save").appendChild(para);
-  // }
-
+ 
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
-    console.log("content: "+ content);
+    console.log("content: " + content);
     const cssText = styleFile;
-    console.log("cssText: "+ cssText);
-    cssText.concat(' ', content);
-    
-    console.log("concat: "+ cssText);
-
-    // content = cleanContent(content);
-    // setText(stylecontent);    
-
-    // console.log("style content: " + stylecontent);
-    const file = new Blob([cssText+content], { type: 'text/html' });
-    // file += cssfile;
-    console.log("result file: " + file);
+    const file = new Blob([cssText + content], { type: 'text/html' });
     element.href = URL.createObjectURL(file);
-    element.download = "myFile.html";
+    element.download = "layout.html";
     document.body.appendChild(element); // Required for this to work in FireFox
-    // document.getElementById("main").appendChild(content);
-
     element.click();
   }
+
   const onClickRead = () => {
-      axios.get('http://localhost:3010/api/read')
+    axios.get('http://localhost:3010/api/read')
       //성공시 then 실행
       .then(function (response) {
         console.log(response);
@@ -112,9 +67,11 @@ function Main() {
       .catch(function (error) {
         console.log(error);
       });
-      //fileList toggle
-      setList(isShow => !isShow);
+    //fileList toggle
+    setList(isShow => !isShow);
   };
+
+  //style.txt 파일 read
   const onClickTXT = () => {
     axios.get('http://localhost:3010/api/readTXT')
       //성공시 then 실행
@@ -128,15 +85,6 @@ function Main() {
         console.log(error);
       });
   };
-  // const onClickDownload = () => {
-  //   var formObj=JSON.parse(form);
-  //   const element = document.createElement("a");
-  //   const file = new Blob([document.getElementById('json-editor').value], {type: 'text/plain'});
-  //   element.href = URL.createObjectURL(file);
-  //   element.download = formObj.page_label+".txt";
-  //   document.body.appendChild(element); // Required for this to work in FireFox
-  //   element.click();
-  // };
 
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
@@ -156,7 +104,7 @@ function Main() {
         <div>
           <h4 class="text-center my-3">Layout Version 1</h4>
           <hr></hr>
-          <div className="new-form">
+          <div className="new-form" >
             {clicked ?
               <form>
 
@@ -244,10 +192,18 @@ function Main() {
         <div class="container-fluid w-50">
           <Row className="d-flex justify-content-start">
             <Col >
-              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); onClickTXT();}}>File List</button>
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead();}}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
-                <li>
-                  {fileList} 
+                <li style={{listStyle:'none'}}>
+                  <div>
+                    <ul class="list-group list-group-flush">
+                      {fileList.map((file, index) => (
+                        <span key={index}>
+                          <li class="list-group-item">{file}</li>
+                        </span>
+                      ))}
+                      </ul>
+                  </div>
                 </li>
               </ul>
             </Col>
@@ -257,22 +213,22 @@ function Main() {
             <Col>
               <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Result</button>
             </Col>
-            <Col >
-              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { download() }}>Save</button>
+            <Col>
+              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { onClickTXT(); download(); }}>Save</button>
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
             <div><pre>{JSON.stringify(formElement, null, 2)}</pre></div>
           </Row>
-          <Row>
+          <Row  >
             <Col>
-              <div className="menuBar"  id="main">
+              <div className="menuBar">
                 <ul className="tabs is-boxed">
                   {tabContArr.map((section, index) => {
                     return section.tabTitle
                   })}
                 </ul>
-                <div>
+                <div id="main">
                   {tabContArr[activeIndex].tabCont}
                 </div>
               </div>
