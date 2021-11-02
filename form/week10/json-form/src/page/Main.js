@@ -242,29 +242,27 @@ function Main() {
     <FormContext.Provider value={{ handleChange }}>
       <div className="App">
         <div class="container-fluid w-50">
-        <Col>
-              <button className="btn btn-small btn-outline-warning get-json-source mb-3" onClick={() => { onClickRead(); onClickTXT();}}>Get File List</button>
+          <Row className="d-flex justify-content-start">
+            <Col >
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); onClickTXT();}}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
                 <li>
                   {fileList} 
                 </li>
               </ul>
             </Col>
-          <Row>
             <Col>
-              <button className="btn btn-small btn-outline-dark get-json-source mb-3" onClick={() => { onClickGetJson() }}>Get Json File Source</button>
+              <button className="btn btn-small btn-outline-dark get-json-source mb-3 create-btn" onClick={() => { onClickGetJson() }}>Json Source</button>
             </Col>
-            <Col className="d-flex justify-content-end">
-              <button className="btn btn-small btn-outline-success get-json-source mb-3" onClick={() => { download() }}>Save</button>
+            <Col>
+              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Result</button>
+            </Col>
+            <Col >
+              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { download() }}>Save</button>
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
             <div><pre>{JSON.stringify(formElement, null, 2)}</pre></div>
-          </Row>
-          <Row>
-            <Col>
-              <button className="btn btn-large btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Check out the Various Layouts of the Form</button>
-            </Col>
           </Row>
           <Row>
             <Col>
