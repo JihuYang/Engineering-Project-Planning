@@ -9,43 +9,45 @@ import jsonSkeleton from '../components/elements/jsonSkeleton.json';
 import formElement from '../formGroupedElement.json';
 import style from '../components/style/style.txt';
 import axios from 'axios';
+const path = '../components/elements/jsonSkeleton.json';
 
-
+// const fileList = ["로그인 Form.json", "양지후 Form.json"];
+// import formDir from '../server/json/'+'fileList[0]';
 
 function Main() {
-//   const onClickRead = () => {    
-//     var data="read";
-//     console.log(data);
-//     // axios.post('http://localhost:3002/api/upload',data)
-//     // //성공시 then 실행
-//     // .then(function (response) {
-//     //   console.log(response);
-//     //   alert(response);
-//     // })
-//     // //실패 시 catch 실행
-//     // .catch(function (error) {
-//     //   console.log(error);
-//     // });
-//     axios.get('http://localhost:3002/api/upload').then((Response)=>{
-//     console.log(Response.data);
-// }).catch((Error)=>{
-//     console.log(Error);
-// })
-//   };
-  
+
   const [clicked, setClicked] = useState(false);
   const [elements, setElements] = useState(null);
   const [isOpen, setJsonFile] = useState(false);
   // const [form, setForm] = useState('{\n"page_label": "이력서 Form",\
   // "fields": [{}');
   const [json, setJson] = useState(null);
-  
+  const [fileList, setFileList] = useState([ 'style.txt',
+  'test.json',
+  'undefined.json',
+  '양지후 Form.json',
+  '이력서 Form.json']);
+  // fileList = [
+  //   'style.txt',
+  //   'test.json',
+  //   'undefined.json',
+  //   '양지후 Form.json',
+  //   '이력서 Form.json'
+  // ];
+  // setFileList([
+  //   'style.txt',
+  //   'test.json',
+  //   'undefined.json',
+  //   '양지후 Form.json',
+  //   '이력서 Form.json'
+  // ]);
+  const [styleFile, setStyleFile] = useState("test");
+  // setStyleFile("test");
   //const { fields, page_label } = elements ?? {}
   const { group, fields } = elements ?? {}
 
-  const [content, setContent] = useState(null);
 
-  const [activeIndex, setActiveIndex]=useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     setJson(jsonSkeleton);
@@ -72,20 +74,25 @@ function Main() {
   //   alert(para);
   //   //document.getElementById("save").appendChild(para);
   // }
-  
+
 
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
-    const reader = new FileReader();
-    const styleFile = '../components/style/style.txt';
-    // reader.readAsText(styleFile.file);
-    // const stylecontent = reader.result;
-    // console.log(stylecontent);
-    const cssfile = new Blob([style], {type: 'text/plain'});
-    const file = new Blob([content], {type: 'text/html'});
+    console.log("content: "+ content);
+    const cssText = styleFile;
+    console.log("cssText: "+ cssText);
+    cssText.concat(' ', content);
+    
+    console.log("concat: "+ cssText);
+
+    // content = cleanContent(content);
+    // setText(stylecontent);    
+
+    // console.log("style content: " + stylecontent);
+    const file = new Blob([cssText+content], { type: 'text/html' });
     // file += cssfile;
-    console.log(file);
+    console.log("result file: " + file);
     element.href = URL.createObjectURL(file);
     element.download = "myFile.html";
     document.body.appendChild(element); // Required for this to work in FireFox
@@ -93,19 +100,31 @@ function Main() {
 
     element.click();
   }
-  const onClickSave = () => {
-    const content = document.getElementById('main').innerHTML;
-    console.log(content);
-    axios.post('http://localhost:3002/api/upload',content)
-    //성공시 then 실행
-    .then(function (response) {
-      console.log(response);
-      alert("데이터를 저장하였습니다.");
-    })
-    //실패 시 catch 실행
-    .catch(function (error) {
-      console.log(error);
-    });
+  const onClickRead = () => {
+      axios.get('http://localhost:3010/api/read')
+      //성공시 then 실행
+      .then(function (response) {
+        console.log(response);
+        console.log(response.data)
+        setFileList(response.data);
+      })
+      //실패 시 catch 실행
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+  const onClickTXT = () => {
+    axios.get('http://localhost:3010/api/readTXT')
+      //성공시 then 실행
+      .then(function (response) {
+        console.log(response);
+        console.log(response.data)
+        setStyleFile(response.data);
+      })
+      //실패 시 catch 실행
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   // const onClickDownload = () => {
   //   var formObj=JSON.parse(form);
@@ -120,80 +139,79 @@ function Main() {
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
     //var schema_str = JSON.stringify(formElement);
-    console.log(isOpen);
   };
 
-  const tabClickHandler=(index)=>{
+  const tabClickHandler = (index) => {
     setActiveIndex(index);
-};
+  };
 
-  const tabContArr=[
+  const tabContArr = [
     {
-        tabTitle:(
-            <li className={activeIndex===0 ? "is-active" : ""} onClick={()=>tabClickHandler(0)}> Version1 </li>
-        ),
-        tabCont:(
-            <div>
-              <h4 class="text-center my-3">Layout Version 1</h4>
-              <hr></hr>
-              <div className="new-form">
-                {clicked ?
-                  <form>
+      tabTitle: (
+        <li className={activeIndex === 0 ? "is-active" : ""} onClick={() => tabClickHandler(0)}> Version1 </li>
+      ),
+      tabCont: (
+        <div>
+          <h4 class="text-center my-3">Layout Version 1</h4>
+          <hr></hr>
+          <div className="new-form">
+            {clicked ?
+              <form>
 
-                    {group.map((group, key) => {
-                      return (
-                        <div key={key}>
-                          <div class="mx-4 my-2">
-                            <h6>{group.group_name}</h6>
+                {group.map((group, key) => {
+                  return (
+                    <div key={key}>
+                      <div class="mx-4 my-2">
+                        <h6>{group.group_name}</h6>
+                        {/* {group.fields.length} */}
+                        {/* {Math.floor((Math.random() * (group.fields.length-0+1)) + 0)} */}
+
+                      </div>
+                      <div class="row m-3 h-auto border">
+                        <div class="col d-flex align-items-center justify-content-center">
+                          <div class="input-group my-2">
                             {/* {group.fields.length} */}
-                            {/* {Math.floor((Math.random() * (group.fields.length-0+1)) + 0)} */}
-
-                          </div>
-                          <div class="row m-3 h-auto border">
-                            <div class="col d-flex align-items-center justify-content-center">
-                              <div class="input-group my-2">
-                                {/* {group.fields.length} */}
-                                {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </form>
-                  : null}
-              </div>
-            </div>
-        )
-    },
-    {
-        tabTitle:(
-            <li className={activeIndex===1 ? "is-active" : ""} onClick={()=>tabClickHandler(1)}> Version2 </li>
-        ),
-        tabCont:(
-            <div>
-              <h4 class="text-center my-3">Layout Version 2</h4>
-              <hr></hr>
-              <div className="new-form">
-                {clicked ?
-                  <form>
-                    {group.map((group, key) => {
-                      return (
-                        <div key={key}>            <div class="mx-4 my-2 text-center">
-
-                          <h6>{group.group_name}</h6>
-                        </div>
-                          <div class="m-3 border">
                             {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
                           </div>
                         </div>
-                      );
-                    })}
-                  </form>
-                  : null}
-              </div>
-            </div>
-        )
+                      </div>
+                    </div>
+                  );
+                })}
+              </form>
+              : null}
+          </div>
+        </div>
+      )
+    },
+    {
+      tabTitle: (
+        <li className={activeIndex === 1 ? "is-active" : ""} onClick={() => tabClickHandler(1)}> Version2 </li>
+      ),
+      tabCont: (
+        <div>
+          <h4 class="text-center my-3">Layout Version 2</h4>
+          <hr></hr>
+          <div className="new-form">
+            {clicked ?
+              <form>
+                {group.map((group, key) => {
+                  return (
+                    <div key={key}>            <div class="mx-4 my-2 text-center">
+
+                      <h6>{group.group_name}</h6>
+                    </div>
+                      <div class="m-3 border">
+                        {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                      </div>
+                    </div>
+                  );
+                })}
+              </form>
+              : null}
+          </div>
+        </div>
+      )
     }
   ];
 
@@ -216,20 +234,26 @@ function Main() {
     });
     console.log(elements)
   }
-  
+
 
   return (
-
     <FormContext.Provider value={{ handleChange }}>
-      <div className="App" id = "main">
+      <div className="App">
         <div class="container-fluid w-50">
-        <Row>
+        <Col>
+              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { onClickRead(); onClickTXT();}}>Get Json File Source</button>
+              {fileList} 
+            </Col>
+          <Row>
             <Col>
-                <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => {onClickGetJson() }}>Get Json File Source</button>
+              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { onClickGetJson() }}>Get Json File Source</button>
+            </Col>
+            <Col>
+              <button className="btn btn-small btn-dark get-json-source mb-3" onClick={() => { download() }}>Save</button>
             </Col>
           </Row>
-          <Row style={{display: isOpen ? 'block' : 'none' }}>
-            <div><pre>{JSON.stringify(formElement, null, 2) }</pre></div>
+          <Row style={{ display: isOpen ? 'block' : 'none' }}>
+            <div><pre>{JSON.stringify(formElement, null, 2)}</pre></div>
           </Row>
           <Row>
             <Col>
@@ -238,10 +262,10 @@ function Main() {
           </Row>
           <Row>
             <Col>
-              <div className="menuBar">
+              <div className="menuBar"  id="main">
                 <ul className="tabs is-boxed">
-                  {tabContArr.map((section, index)=>{
-                      return section.tabTitle
+                  {tabContArr.map((section, index) => {
+                    return section.tabTitle
                   })}
                 </ul>
                 <div>
