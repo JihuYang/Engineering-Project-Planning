@@ -1,31 +1,37 @@
 {
     "page_label": "양지후 Form",
-    "fields": [
+    "group": [
         {
-            "id": "color_1",
-            "label": "",
-            "value": "",
-            "type": "color",
-            "width": ""
-        },
-        {
-            "id": "email_1",
-            "label": "",
-            "mandatory": "",
-            "placeholder": "",
-            "value": "",
-            "type": "email",
-            "width": ""
-        },
-        {
-            "id": "date_1",
-            "label": "",
-            "mandatory": "",
-            "value": "",
-            "min": "",
-            "filed_max": "",
-            "type": "date",
-            "width": ""
+            "group_name": "ZZ form",
+            "fields": [
+                {
+                    "id": "color_1",
+                    "label": "",
+                    "value": "",
+                    "type": "color",
+                    "width": ""
+                },
+                {
+                    "id": "email_1",
+                    "label": "",
+                    "mandatory": "",
+                    "placeholder": "",
+                    "value": "",
+                    "type": "email",
+                    "width": ""
+                },
+                {
+                    "id": "date_1",
+                    "label": "",
+                    "mandatory": "",
+                    "value": "",
+                    "min": "",
+                    "filed_max": "",
+                    "type": "date",
+                    "width": ""
+                }
+            ]
+
         }
     ]
 }
