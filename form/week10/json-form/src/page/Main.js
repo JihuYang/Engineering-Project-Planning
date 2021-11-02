@@ -99,12 +99,12 @@ function Main() {
       }).then(function (response) {
         console.log(response);
         setDataFile(response.data);
-        alert(response.data);
       })
       //실패 시 catch 실행
       .catch(function (error) {
         console.log(error);
       });
+
     };
 
   const onClickGetJson = () => {
@@ -212,14 +212,14 @@ function Main() {
         <div class="container-fluid w-50">
           <Row className="d-flex justify-content-start">
             <Col >
-              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead();}}>File List</button>
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); }}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
                 <li style={{listStyle:'none'}}>
                   <div>
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);}}>{file}</a>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);onClickGetJson();  }}>{file}</a>
                         </span>
                       ))}
                       </ul>
