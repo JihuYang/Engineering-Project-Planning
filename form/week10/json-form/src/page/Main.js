@@ -90,17 +90,6 @@ function Main() {
 
     //filelist에서 읽어올 파일 선택
     const onClickSelectFile = (data) => {
-      console.log("data: " + data);
-      // axios.post('http://localhost:3002/api/file',{param: data})
-      // //성공시 then 실행
-      // .then(function (response) {
-      //   console.log(response);
-      //   alert("데이터를 저장하였습니다.");
-      // })
-      // //실패 시 catch 실행
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
       axios({
         method: 'post',
         url: 'http://localhost:3010/api/file',
