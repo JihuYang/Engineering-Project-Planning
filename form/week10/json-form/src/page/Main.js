@@ -46,9 +46,10 @@ function Main() {
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
-    console.log("content: " + content);
+    const contentWidth = "<div style='width:50%;' class='d-flex justify-content-center'>"+content+"</div>";
+    console.log("contentWidth: " + contentWidth);
     const cssText = styleFile;
-    const file = new Blob([cssText + content], { type: 'text/html' });
+    const file = new Blob([cssText + contentWidth], { type: 'text/html' });
     element.href = URL.createObjectURL(file);
     element.download = "layout.html";
     document.body.appendChild(element); // Required for this to work in FireFox
@@ -211,10 +212,10 @@ function Main() {
               <button className="btn btn-small btn-outline-dark get-json-source mb-3 create-btn" onClick={() => { onClickGetJson() }}>Json Source</button>
             </Col>
             <Col>
-              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate() }}>Result</button>
+              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate(); onClickTXT(); }}>Result</button>
             </Col>
             <Col>
-              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { onClickTXT(); download(); }}>Save</button>
+              <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { download(); }}>Save</button>
             </Col>
           </Row>
           <Row style={{ display: isOpen ? 'block' : 'none' }}>
