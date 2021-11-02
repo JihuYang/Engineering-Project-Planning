@@ -5,6 +5,8 @@ const { application } = require('express');
 const fs = require("fs");
 const filelist = fs.readdirSync("./server/json");
 
+
+
 const fileTxt = fs.readFileSync('./server/json/style.txt','utf-8');
 console.log(filelist);
 
