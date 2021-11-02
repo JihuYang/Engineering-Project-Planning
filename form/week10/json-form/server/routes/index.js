@@ -8,6 +8,10 @@ const filelist = fs.readdirSync("./server/json");
 
 
 const fileTxt = fs.readFileSync('./server/json/style.txt','utf-8');
+
+
+
+
 console.log(filelist);
 
 router.get('/',function(req,res){
