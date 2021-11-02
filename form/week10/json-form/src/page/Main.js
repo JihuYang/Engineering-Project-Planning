@@ -46,7 +46,7 @@ function Main() {
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
-    const contentWidth = "<div style='width:50%;' class='d-flex justify-content-center'>"+content+"</div>";
+    const contentWidth = "<div style='width:50%;'>"+content+"</div>";
     console.log("contentWidth: " + contentWidth);
     const cssText = styleFile;
     const file = new Blob([cssText + contentWidth], { type: 'text/html' });
