@@ -25,6 +25,7 @@ function Main() {
     'test.json']);
 
   const [styleFile, setStyleFile] = useState("test");
+  const [dataFile, setDataFile] = useState("test");
   const { group, fields } = elements ?? {}
 
 
@@ -35,7 +36,7 @@ function Main() {
   }, [])
 
   const onClickCreate = () => {
-    var schema_str = JSON.stringify(formElement);
+    var schema_str = JSON.stringify(dataFile);
     var schema = schema_str;
     console.log(schema);
     var myobj = JSON.parse(schema);
@@ -85,6 +86,36 @@ function Main() {
         console.log(error);
       });
   };
+
+    //filelist에서 읽어올 파일 선택
+    const onClickSelectFile = (data) => {
+      console.log("data: " + data);
+      // axios.post('http://localhost:3002/api/file',{param: data})
+      // //성공시 then 실행
+      // .then(function (response) {
+      //   console.log(response);
+      //   alert("데이터를 저장하였습니다.");
+      // })
+      // //실패 시 catch 실행
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
+      axios({
+        method: 'post',
+        url: 'http://localhost:3010/api/file',
+        data: {
+          fileIndex: data
+        }
+      }).then(function (response) {
+        console.log(response);
+        setDataFile(response.data);
+        alert(response.data);
+      })
+      //실패 시 catch 실행
+      .catch(function (error) {
+        console.log(error);
+      });
+    };
 
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
@@ -199,7 +230,7 @@ function Main() {
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <li class="list-group-item">{file}</li>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);}}>{file}</a>
                         </span>
                       ))}
                       </ul>
