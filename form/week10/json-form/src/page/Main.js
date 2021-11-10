@@ -54,8 +54,6 @@ function Main() {
     axios.get('http://localhost:3010/api/read')
       //성공시 then 실행
       .then(function (response) {
-        console.log(response);
-        console.log(response.data)
         setFileList(response.data);
         const path = require('path');
         console.log(fileList.length);
@@ -65,9 +63,7 @@ function Main() {
             fileList.splice(i);
           }
         }
-        console.log(fileList);
         setFileList(fileList);
-        console.log(path.extname(fileList[0])); // .html
       })
       //실패 시 catch 실행
       .catch(function (error) {
