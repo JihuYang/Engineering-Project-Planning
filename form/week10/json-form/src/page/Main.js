@@ -136,7 +136,7 @@ function Main() {
           <div className="new-form" >
             {clicked ?
               <form>
-                {group.map((group, key) => {
+                {group != null ?group.map((group, key) => {
                   return (
                     <div key={key}>
                       <div class="mx-4 my-2">
@@ -152,7 +152,7 @@ function Main() {
                       </div>
                     </div>
                   );
-                })}
+                }):null}
               </form>
               : null}
           </div>
@@ -170,7 +170,7 @@ function Main() {
           <div className="new-form">
             {clicked ?
               <form>
-                {group.map((group, key) => {
+                {group != null ? group.map((group, key) => {
                   return (
                     <div key={key}>            
                     <div class="mx-4 my-2 text-center">
@@ -181,7 +181,7 @@ function Main() {
                       </div>
                     </div>
                   );
-                })}
+                }) : null}
               </form>
               : null}
           </div>
@@ -224,7 +224,7 @@ function Main() {
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);}}>{file}</a>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);onClickCreate();}}>{file}</a>
                         </span>
                       ))}
                       </ul>
