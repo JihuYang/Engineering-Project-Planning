@@ -67,6 +67,7 @@ function Main() {
           }
         }
         console.log(fileList);
+        //setFileList(fileList);
         console.log(path.extname(fileList[0])); // .html
       })
       //실패 시 catch 실행
