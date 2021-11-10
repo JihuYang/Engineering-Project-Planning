@@ -36,11 +36,11 @@ function Main() {
     setElements(myobj);
     setClicked(true);
   };
- 
+
   const download = () => {
     const element = document.createElement("a");
     const content = document.getElementById('main').innerHTML;
-    const contentWidth = "<div style='width:50%;'>"+content+"</div>";
+    const contentWidth = "<div style='width:50%;'>" + content + "</div>";
     console.log("contentWidth: " + contentWidth);
     const cssText = styleFile;
     const file = new Blob([cssText + contentWidth], { type: 'text/html' });
@@ -57,6 +57,17 @@ function Main() {
         console.log(response);
         console.log(response.data)
         setFileList(response.data);
+        const path = require('path');
+        console.log(fileList.length);
+        for (let i = 0; i < fileList.length; i++) {
+          console.log("for file" + i + path.extname(fileList[i])); // .html
+          if(path.extname(fileList[i]) != ".json") {
+            fileList.splice(i);
+          }
+        }
+        console.log(fileList);
+        setFileList(fileList);
+        console.log(path.extname(fileList[0])); // .html
       })
       //실패 시 catch 실행
       .catch(function (error) {
@@ -65,7 +76,7 @@ function Main() {
     //fileList toggle
     setList(isShow => !isShow);
   };
- 
+
   //style.txt 파일 read
   const onClickTXT = () => {
     axios.get('http://localhost:3010/api/readTXT')
@@ -81,24 +92,24 @@ function Main() {
       });
   };
 
-    //filelist에서 읽어올 파일 선택
-    const onClickSelectFile = (data) => {
-      axios({
-        method: 'post',
-        url: 'http://localhost:3010/api/file',
-        data: {
-          fileIndex: data
-        }
-      }).then(function (response) {
-        console.log(response);
-        setDataFile(response.data);
-      })
+  //filelist에서 읽어올 파일 선택
+  const onClickSelectFile = (data) => {
+    axios({
+      method: 'post',
+      url: 'http://localhost:3010/api/file',
+      data: {
+        fileIndex: data
+      }
+    }).then(function (response) {
+      console.log(response);
+      setDataFile(response.data);
+    })
       //실패 시 catch 실행
       .catch(function (error) {
         console.log(error);
       });
 
-    };
+  };
 
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
@@ -156,10 +167,10 @@ function Main() {
               <form>
                 {group.map((group, key) => {
                   return (
-                    <div key={key}>            
-                    <div class="mx-4 my-2 text-center">
-                      <h6>{group.group_name}</h6>
-                    </div>
+                    <div key={key}>
+                      <div class="mx-4 my-2 text-center">
+                        <h6>{group.group_name}</h6>
+                      </div>
                       <div class="m-3 border">
                         {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
                       </div>
@@ -203,15 +214,15 @@ function Main() {
             <Col >
               <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); }}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
-                <li style={{listStyle:'none'}}>
+                <li style={{ listStyle: 'none' }}>
                   <div>
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);onClickGetJson();  }}>{file}</a>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index); onClickGetJson(); }}>{file}</a>
                         </span>
                       ))}
-                      </ul>
+                    </ul>
                   </div>
                 </li>
               </ul>
