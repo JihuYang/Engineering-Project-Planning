@@ -50,7 +50,23 @@ function Main() {
     element.click();
   }
 
-  const onClickRead = () => {
+  // const onClickRead = () => {
+  //   axios.get('http://localhost:3010/api/read')
+  //     //성공시 then 실행
+  //     .then(function (response) {
+  //       console.log(response);
+  //       console.log(response.data)
+  //       setFileList(response.data);
+  //     })
+  //     //실패 시 catch 실행
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  //   //fileList toggle
+  //   setList(isShow => !isShow);
+  // };
+ 
+  React.useEffect(() => {
     axios.get('http://localhost:3010/api/read')
       //성공시 then 실행
       .then(function (response) {
@@ -64,8 +80,8 @@ function Main() {
       });
     //fileList toggle
     setList(isShow => !isShow);
-  };
- 
+  }, []);
+
   //style.txt 파일 read
   const onClickTXT = () => {
     axios.get('http://localhost:3010/api/readTXT')
@@ -97,7 +113,7 @@ function Main() {
       .catch(function (error) {
         console.log(error);
       });
-
+      
     };
 
   const onClickGetJson = () => {
@@ -201,14 +217,14 @@ function Main() {
         <div class="container-fluid w-50">
           <Row className="d-flex justify-content-start">
             <Col >
-              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); }}>File List</button>
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => {}}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
                 <li style={{listStyle:'none'}}>
                   <div>
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);onClickGetJson();  }}>{file}</a>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);}}>{file}</a>
                         </span>
                       ))}
                       </ul>
