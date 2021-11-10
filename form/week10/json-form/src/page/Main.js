@@ -5,14 +5,7 @@ import React, { useState, useEffect } from 'react';
 import Element from '../components/Element';
 import { FormContext } from '../FormContext';
 import jsonSkeleton from '../components/elements/jsonSkeleton.json';
-//import formElement from '../formElement.json';
-//import formElement from '../formGroupedElement.json';
-import style from '../components/style/style.txt';
 import axios from 'axios';
-const path = '../components/elements/jsonSkeleton.json';
-
-// const fileList = ["로그인 Form.json", "양지후 Form.json"];
-// import formDir from '../server/json/'+'fileList[0]';
 
 function Main() {
 
@@ -72,7 +65,7 @@ function Main() {
     //fileList toggle
     setList(isShow => !isShow);
   };
-
+ 
   //style.txt 파일 read
   const onClickTXT = () => {
     axios.get('http://localhost:3010/api/readTXT')
@@ -109,7 +102,6 @@ function Main() {
 
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
-    //var schema_str = JSON.stringify(formElement);
   };
 
   const tabClickHandler = (index) => {
@@ -133,9 +125,6 @@ function Main() {
                     <div key={key}>
                       <div class="mx-4 my-2">
                         <h6>{group.group_name}</h6>
-                        {/* {group.fields.length} */}
-                        {/* {Math.floor((Math.random() * (group.fields.length-0+1)) + 0)} */}
-
                       </div>
                       <div class="row m-3 h-auto border">
                         <div class="col d-flex align-items-center justify-content-center">
@@ -167,8 +156,8 @@ function Main() {
               <form>
                 {group.map((group, key) => {
                   return (
-                    <div key={key}>            <div class="mx-4 my-2 text-center">
-
+                    <div key={key}>            
+                    <div class="mx-4 my-2 text-center">
                       <h6>{group.group_name}</h6>
                     </div>
                       <div class="m-3 border">
@@ -231,7 +220,7 @@ function Main() {
               <button className="btn btn-small btn-outline-dark get-json-source mb-3 create-btn" onClick={() => { onClickGetJson() }}>Json Source</button>
             </Col>
             <Col>
-              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate(); onClickTXT(); }}>Result</button>
+              <button className="btn btn-small btn-outline-secondary create-btn" onClick={() => { onClickCreate(); onClickTXT(); }}>Layout</button>
             </Col>
             <Col>
               <button className="btn btn-small btn-outline-success get-json-source mb-3 create-btn" onClick={() => { download(); }}>Save</button>

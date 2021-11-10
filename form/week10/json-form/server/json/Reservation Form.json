@@ -1,0 +1,61 @@
+{
+	"page_label" : "호텔예약 Form",
+	"group" : [
+		{
+			"group_name" : "예약정보",
+			"fields" : [
+			 	{
+					"id" : "text_1",
+					"label" : "이름",
+					"placeholder" : "Enter your name",
+					"value" : "",
+					"width" : "half",
+					"type" : "text"
+				},
+                                   {
+					"id" : "tel_1",
+					"label" : "전화번호",
+					"placeholder" : "010-7579-5847",
+					"value" : "",
+					"pattern" : "[0-9]{3}-[0-9]{4}-[0-9]{4}",
+					"width" : "half",
+					"type" : "tel"
+				}
+				,{
+					"id" : "text_1",
+					"label" : "여행지",
+					"placeholder" : "Enter your place",
+					"value" : "",
+					"width" : "full",
+					"type" : "text"
+				}     ,{
+					"id" : "datetime-local_1",
+					"label" : "체크인",
+					"value" : "",
+					"min" : "2000-01-01T00:00",
+					"max" : "2022-12-31T00:00",
+					"width" : "half",
+					"type" : "datetime-local"
+				}
+                                  ,{
+					"id" : "datetime-local_1",
+					"label" : "체크아웃",
+					"value" : "",
+					"min" : "2000-01-01T00:00",
+					"max" : "2022-12-31T00:00",
+					"width" : "half",
+					"type" : "datetime-local"
+				}
+			 	,{
+					"id" : "number_1",
+					"label" : "투숙인원",
+					"value" : "",
+					"min" : "0",
+					"max" : "100",
+					"width" : "one",
+					"type" : "number"
+				}
+                       ]
+		}
+	]
+}
