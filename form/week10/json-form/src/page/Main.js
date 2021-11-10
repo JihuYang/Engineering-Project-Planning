@@ -50,36 +50,24 @@ function Main() {
     element.click();
   }
 
-  // const onClickRead = () => {
-  //   axios.get('http://localhost:3010/api/read')
-  //     //성공시 then 실행
-  //     .then(function (response) {
-  //       console.log(response);
-  //       console.log(response.data)
-  //       setFileList(response.data);
-  //     })
-  //     //실패 시 catch 실행
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  //   //fileList toggle
-  //   setList(isShow => !isShow);
-  // };
- 
-  React.useEffect(() => {
+  const onClickRead = () => {
     axios.get('http://localhost:3010/api/read')
       //성공시 then 실행
       .then(function (response) {
+        console.log(response);
+        console.log(response.data)
         setFileList(response.data);
+        const result = [];
         const path = require('path');
-        console.log(fileList.length);
+        console.log("length: " + fileList.length);
         for (let i = 0; i < fileList.length; i++) {
           console.log("for file" + i + path.extname(fileList[i])); // .html
           if(path.extname(fileList[i]) != ".json") {
-            fileList.splice(i);
+            
           }
         }
-        setFileList(fileList);
+        console.log(fileList);
+        console.log(path.extname(fileList[0])); // .html
       })
       //실패 시 catch 실행
       .catch(function (error) {
@@ -87,7 +75,7 @@ function Main() {
       });
     //fileList toggle
     setList(isShow => !isShow);
-  }, []);
+  };
 
   //style.txt 파일 read
   const onClickTXT = () => {
@@ -120,7 +108,8 @@ function Main() {
       .catch(function (error) {
         console.log(error);
       });
-    };
+
+  };
 
   const onClickGetJson = () => {
     setJsonFile(isOpen => !isOpen);
@@ -142,7 +131,7 @@ function Main() {
           <div className="new-form" >
             {clicked ?
               <form>
-                {group != null ?group.map((group, key) => {
+                {group.map((group, key) => {
                   return (
                     <div key={key}>
                       <div class="mx-4 my-2">
@@ -158,7 +147,7 @@ function Main() {
                       </div>
                     </div>
                   );
-                }):null}
+                })}
               </form>
               : null}
           </div>
@@ -176,7 +165,7 @@ function Main() {
           <div className="new-form">
             {clicked ?
               <form>
-                {group != null ? group.map((group, key) => {
+                {group.map((group, key) => {
                   return (
                     <div key={key}>
                       <div class="mx-4 my-2 text-center">
@@ -187,7 +176,7 @@ function Main() {
                       </div>
                     </div>
                   );
-                }) : null}
+                })}
               </form>
               : null}
           </div>
@@ -223,14 +212,14 @@ function Main() {
         <div class="container-fluid w-50">
           <Row className="d-flex justify-content-start">
             <Col >
-              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => {}}>File List</button>
+              <button className="btn btn-small btn-outline-warning get-json-source mb-3 create-btn" onClick={() => { onClickRead(); }}>File List</button>
               <ul className={isShow ? "show-menu" : "hide-menu"}>
                 <li style={{ listStyle: 'none' }}>
                   <div>
                     <ul class="list-group list-group-flush">
                       {fileList.map((file, index) => (
                         <span key={index}>
-                          <a class="list-group-item" onClick={() => { onClickSelectFile(index);onClickCreate();}}>{file}</a>
+                          <a class="list-group-item" onClick={() => { onClickSelectFile(index); onClickGetJson(); }}>{file}</a>
                         </span>
                       ))}
                     </ul>
