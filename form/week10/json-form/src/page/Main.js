@@ -71,19 +71,18 @@ function Main() {
       //성공시 then 실행
       .then(function (response) {
         console.log(response);
-        console.log(response.data)
-        setFileList(response.data);
+        console.log(response.data);
+
         const path = require('path');
+        console.log("after get filelist: " + response.data);
         console.log(fileList.length);
-        for (let i = 0; i < fileList.length; i++) {
-          console.log("for file" + i + path.extname(fileList[i])); // .html
-          if(path.extname(fileList[i]) != ".json") {
-            fileList.splice(i);
+        for (let i = 0; i < response.data.length; i++) {
+          console.log("for file" + i + path.extname(response.data[i])); // .html
+          if(path.extname(response.data[i]) != ".json") {
+            response.data.splice(i);
           }
         }
-        console.log(fileList);
-        //setFileList(fileList);
-        console.log(path.extname(fileList[0])); // .html
+        setFileList(response.data);
       })
       //실패 시 catch 실행
       .catch(function (error) {
