@@ -1,0 +1,85 @@
+{
+	"page_label" : "설문조사 Form",
+	"group" : [
+		{
+			"group_name" : "개인정보",
+			"fields" : [
+			 	{
+					"id" : "text_1",
+					"label" : "이름",
+					"placeholder" : "Enter your name",
+					"value" : "",
+					"width" : "half",
+					"type" : "text"
+				}
+                                  ,{
+					"id" : "email_1",
+					"label" : "이메일",
+					"placeholder" : "abc@example.com",
+					"value" : "",
+					"width" : "half",
+					"type" : "email"
+				}
+				,{
+					"id" : "number_1",
+					"label" : "나이",
+					"value" : "",
+					"min" : "0",
+					"max" : "100",
+					"width" : "one",
+					"type" : "number"
+				}
+				,{
+					"id" : "checkbox_1",
+					"label" : "남성",
+					"value" : "",
+					"width" : "quarter",
+					"type" : "checkbox"
+				}
+			 	,{
+					"id" : "checkbox_2",
+					"label" : "여성",
+					"value" : "",
+					"width" : "quarter",
+					"type" : "checkbox"
+				}
+	]
+		},
+		{
+			"group_name" : "질문",
+			"fields" : [
+			 	{
+					"id" : "file_1",
+					"label" : "File Label",
+					"value" : "",
+					"width" : "half",
+					"type" : "file"
+				}
+				,{
+					"id" : "color_1",
+					"label" : "Color picker",
+					"value" : "",
+					"width" : "",
+					"type" : "color"
+				}
+				,{
+					"id" : "range_1",
+					"label" : "Range Label",
+					"value" : "",
+					"min" : "0",
+					"max" : "100",
+					"step" : "1",
+					"width" : "full",
+					"type" : "range"
+				}
+                                ,{
+					"id" : "checkbox_1",
+					"label" : "개인정보 수집에 동의하십니까?",
+					"value" : "",
+					"width" : "full",
+					"type" : "checkbox"
+				}
+			 ]
+		}
+	]
+}
