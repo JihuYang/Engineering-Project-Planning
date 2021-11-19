@@ -18,7 +18,6 @@
 */
 import React from "react";
 // react plugin used to create charts
-import { Line, Pie } from "react-chartjs-2";
 // reactstrap components
 import {
   Card,
@@ -149,24 +148,7 @@ function Dashboard() {
         <Row>
           <Col md="12">
             <Card>
-              <CardHeader>
-                <CardTitle tag="h5">Users Behavior</CardTitle>
-                <p className="card-category">24 Hours performance</p>
-              </CardHeader>
-              <CardBody>
-                <Line
-                  data={dashboard24HoursPerformanceChart.data}
-                  options={dashboard24HoursPerformanceChart.options}
-                  width={400}
-                  height={100}
-                />
-              </CardBody>
-              <CardFooter>
-                <hr />
-                <div className="stats">
-                  <i className="fa fa-history" /> Updated 3 minutes ago
-                </div>
-              </CardFooter>
+              
             </Card>
           </Col>
         </Row>
@@ -178,10 +160,7 @@ function Dashboard() {
                 <p className="card-category">Last Campaign Performance</p>
               </CardHeader>
               <CardBody style={{ height: "266px" }}>
-                <Pie
-                  data={dashboardEmailStatisticsChart.data}
-                  options={dashboardEmailStatisticsChart.options}
-                />
+               
               </CardBody>
               <CardFooter>
                 <div className="legend">
@@ -204,12 +183,7 @@ function Dashboard() {
                 <p className="card-category">Line Chart with Points</p>
               </CardHeader>
               <CardBody>
-                <Line
-                  data={dashboardNASDAQChart.data}
-                  options={dashboardNASDAQChart.options}
-                  width={400}
-                  height={100}
-                />
+                
               </CardBody>
               <CardFooter>
                 <div className="chart-legend">

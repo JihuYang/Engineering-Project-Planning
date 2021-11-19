@@ -56,13 +56,13 @@ function Sidebar(props) {
           href="https://www.creative-tim.com"
           className="simple-text logo-mini"
         >
-          <div className="logo-img">
-            <img src={logo} alt="react-logo" />
+          <div className="nc-icon nc-spaceship">
+            
           </div>
         </a>
         <a
-          href="https://www.creative-tim.com"
-          className="simple-text logo-normal"
+          href="#"
+          className="simple-text "
         >
           File List
         </a>
