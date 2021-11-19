@@ -1,5 +1,5 @@
 import '../css/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Button, Form, FormGroup, Label, Col, Row } from 'reactstrap';
 import React, { useState, useEffect } from 'react';
 import Element from '../components/Element';
@@ -8,6 +8,7 @@ import jsonSkeleton from '../json/Reservation Form.json';
 import style from '../json/style.txt';
 import ReactLoading from 'react-loading';
 import { assertExpressionStatement } from '@babel/types';
+import "assets/css/custom.css";
 
 function Reservation() {
 
@@ -187,6 +188,72 @@ function Reservation() {
                       </div>
                       <div class="m-3 border">
                         {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                      </div>
+                    </div>
+                  );
+                }): <ReactLoading type="spinningBubbles" color="blue" height={667} width={375} />}
+              </form>
+              : null}
+          </div>
+        </div>
+      )
+    },
+    {
+      tabTitle: (
+        <li className={activeIndex === 2 ? "is-active" : ""} onClick={() => tabClickHandler(2)}> Version3 </li>
+      ),
+      tabCont: (
+        <div>
+          <h4 class="text-center my-3">Layout Version 3</h4>
+          <hr></hr>
+          <div className="new-form bg-1 pt-5">
+            {clicked ?
+              <form>
+                {group != null ?group.map((group, key) => {
+                  return (
+                    <div key={key}>
+                      <div class="mx-4 my-2 text-center">
+                      <h5 class="bg-1-color">{group.group_name}</h5>
+                      </div>
+                      <div class="row m-3 h-auto border">
+                        <div class="col d-flex align-items-center justify-content-center">
+                          <div class="input-group my-2">
+                            {/* {group.fields.length} */}
+                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }): <ReactLoading type="spinningBubbles" color="blue" height={667} width={375} />}
+              </form>
+              : null}
+          </div>
+        </div>
+      )
+    },
+    {
+      tabTitle: (
+        <li className={activeIndex === 3 ? "is-active" : ""} onClick={() => tabClickHandler(3)}> Version4 </li>
+      ),
+      tabCont: (
+        <div>
+          <h4 class="text-center my-3">Layout Version 4</h4>
+          <hr></hr>
+          <div className="new-form bg-1 pt-5">
+            {clicked ?
+              <form class="grid">
+              {group != null ?group.map((group, key) => {
+                  return (
+                    <div className ={key%2 == 0?"":""} key={key}>
+                      <div class="mx-4 my-2 text-center">
+                      <h5 class="bg-1-color">{group.group_name}</h5>
+                      </div>
+                      <div class="float-left">
+                          <div class="input-group my-2">
+                            {/* {group.fields.length} */}
+                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+                          </div>
                       </div>
                     </div>
                   );
