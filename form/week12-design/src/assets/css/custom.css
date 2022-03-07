@@ -28,3 +28,7 @@
   .white {
       color: white;
   }
+  .px-50 {
+    margin-left: 20%;
+    margin-right: 20%;
+  }

@@ -190,7 +190,7 @@ const download = () => {
                       <div class="mx-4 my-2 text-center">
                         <h6>{group.group_name}</h6>
                       </div>
-                      <div class="m-3 border">
+                      <div class="m-3 border text-center ">
                         {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
                       </div>
                     </div>
@@ -268,36 +268,36 @@ const download = () => {
         </div>
       )
     },
-    {
-      tabTitle: (
-        <li className={activeIndex === 4 ? "is-active" : ""} onClick={() => tabClickHandler(4)}> Version5 </li>
-      ),
-      tabCont: (
-        <div>
-          <h4 class="text-center my-3">Layout Version 5</h4>
-          <hr></hr>
-          <div className="new-form bg-1 pt-5">
-            {clicked ?
-              <form class="grid">
-              {group != null ?group.map((group, key) => {
-                  return (
-                    <div className ={key%2 == 0?"":""} key={key}>
-                      <div class="mx-4 my-2 text-center">
-                      <h5 class="bg-1-color">{group.group_name}</h5>
-                      </div>
-                      <div class="m-3 border">
-                            {/* {group.fields.length} */}
-                            {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
-                          </div>
-                    </div>
-                  );
-                }): <ReactLoading type="spinningBubbles" color="blue" height={667} width={375} />}
-              </form>
-              : null}
-          </div>
-        </div>
-      )
-    }
+    // {
+    //   tabTitle: (
+    //     <li className={activeIndex === 4 ? "is-active" : ""} onClick={() => tabClickHandler(4)}> Version5 </li>
+    //   ),
+    //   tabCont: (
+    //     <div>
+    //       <h4 class="text-center my-3">Layout Version 5</h4>
+    //       <hr></hr>
+    //       <div className="new-form bg-1 pt-5">
+    //         {clicked ?
+    //           <form class="grid">
+    //           {group != null ?group.map((group, key) => {
+    //               return (
+    //                 <div className ={key%2 == 0?"":""} key={key}>
+    //                   <div class="mx-4 my-2 text-center">
+    //                   <h5 class="bg-1-color">{group.group_name}</h5>
+    //                   </div>
+    //                   <div class="m-3 border">
+    //                         {/* {group.fields.length} */}
+    //                         {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
+    //                       </div>
+    //                 </div>
+    //               );
+    //             }): <ReactLoading type="spinningBubbles" color="blue" height={667} width={375} />}
+    //           </form>
+    //           : null}
+    //       </div>
+    //     </div>
+    //   )
+    // }
   ];
 
   const handleChange = (id, event) => {
