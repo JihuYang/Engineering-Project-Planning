@@ -191,7 +191,7 @@ const download = () => {
                       <div class="mx-4 my-2 text-center">
                         <h6>{group.group_name}</h6>
                       </div>
-                      <div class="m-3 border text-center">
+                      <div class="m-3 border text-center row justify-content-center">
                         {group.fields ? group.fields.map((field, i) => <Element key={i} field={field} />) : null}
                       </div>
                     </div>
