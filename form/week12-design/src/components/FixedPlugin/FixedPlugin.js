@@ -33,8 +33,10 @@ function FixedPlugin(props) {
     <div className="fixed-plugin">
       <div className={classes}>
         <div onClick={handleClick}>
-          <i className="fa fa-cog fa-2x" />
+          {/* <i className="fa fa-cog fa-2x" /> */}
+          <i className="fa fa-palette fa-2x py-3 white"></i>
         </div>
+
         <ul className="dropdown-menu show">
           <li className="header-title">SIDEBAR BACKGROUND</li>
           <li className="adjustments-line">
@@ -123,7 +125,7 @@ function FixedPlugin(props) {
               />
             </div>
           </li>
-          <li className="button-container">
+          {/* <li className="button-container">
             <Button
               href="https://www.creative-tim.com/product/paper-dashboard-react?ref=pdr-fixed-plugin"
               color="primary"
@@ -132,30 +134,7 @@ function FixedPlugin(props) {
             >
               Download now
             </Button>
-          </li>
-          <li className="button-container">
-            <Button
-              href="https://www.creative-tim.com/product/paper-dashboard-react/#/documentation/tutorial?ref=pdr-fixed-plugin"
-              color="default"
-              block
-              className="btn-round"
-              outline
-            >
-              <i className="nc-icon nc-paper" /> Documentation
-            </Button>
-          </li>
-          <li className="header-title">Want more components?</li>
-          <li className="button-container">
-            <Button
-              href="https://www.creative-tim.com/product/paper-dashboard-pro-react?ref=pdr-fixed-plugin"
-              color="danger"
-              block
-              className="btn-round"
-              target="_blank"
-            >
-              Get pro version
-            </Button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

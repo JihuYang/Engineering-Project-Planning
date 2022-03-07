@@ -4,13 +4,12 @@ import { Container, Button, Form, FormGroup, Label, Col, Row } from 'reactstrap'
 import React, { useState, useEffect } from 'react';
 import Element from '../components/Element';
 import { FormContext } from '../FormContext';
-import jsonSkeleton from '../json/Reservation Form.json';
+import jsonSkeleton from '../json/Resume Form.json';
 import style from '../json/style.txt';
 import ReactLoading from 'react-loading';
 import { assertExpressionStatement } from '@babel/types';
 import "assets/css/custom.css";
 import axios from 'axios';
-
 
 
 function Reservation(props) {
@@ -138,7 +137,6 @@ const download = () => {
   const tabClickHandler = (index) => {
     setActiveIndex(index);
   };
-
 
   const tabContArr = [
     {

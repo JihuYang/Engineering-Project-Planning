@@ -17,6 +17,7 @@
 
 */
 import Reservation from "views/Reservation.js";
+import Resume from "views/Resume.js";
 import Dashboard from "views/Dashboard.js";
 import Notifications from "views/Notifications.js";
 import Icons from "views/Icons.js";
@@ -28,59 +29,65 @@ import UpgradeToPro from "views/Upgrade.js";
 
 var routes = [
   {
+    path: "/resume",
+    name: "Resume",
+    component: Resume,
+    layout: "/admin",
+  },
+  {
     path: "/reservation",
     name: "Reservation",
     component: Reservation,
     layout: "/admin",
   },
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
-    layout: "/admin",
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    component: Icons,
-    layout: "/admin",
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    component: Maps,
-    layout: "/admin",
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    component: Notifications,
-    layout: "/admin",
-  },
-  {
-    path: "/user-page",
-    name: "User Profile",
-    component: UserPage,
-    layout: "/admin",
-  },
-  {
-    path: "/tables",
-    name: "Table List",
-    component: TableList,
-    layout: "/admin",
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    component: Typography,
-    layout: "/admin",
-  },
-  {
-    pro: true,
-    path: "/upgrade",
-    name: "Upgrade to PRO",
-    component: UpgradeToPro,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   component: Dashboard,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/icons",
+  //   name: "Icons",
+  //   component: Icons,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/maps",
+  //   name: "Maps",
+  //   component: Maps,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   component: Notifications,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/user-page",
+  //   name: "User Profile",
+  //   component: UserPage,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/tables",
+  //   name: "Table List",
+  //   component: TableList,
+  //   layout: "/admin",
+  // },
+  // {
+  //   path: "/typography",
+  //   name: "Typography",
+  //   component: Typography,
+  //   layout: "/admin",
+  // },
+  // {
+  //   pro: true,
+  //   path: "/upgrade",
+  //   name: "Upgrade to PRO",
+  //   component: UpgradeToPro,
+  //   layout: "/admin",
+  // },
 ];
 export default routes;
